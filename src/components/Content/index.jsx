@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.scss';
 import Head from '../Head';
 
 function Content() {
+    const [num, setNum] = useState(0);
 
     useEffect(()=> {
         const onscroll = () => {
@@ -14,12 +15,18 @@ function Content() {
         }
     }, []);
 
+    const handleAdd = (e) => {
+        console.log(e);
+        setNum(e);
+    }
+
     return (
         <div className="content">
             <div className="placeholder"></div>
-            <Head/>
+            <Head add={handleAdd} num={num}/>
             <div className="body">
                     一堆内容
+                    {num}
                     <br/>
             </div>
         </div>
